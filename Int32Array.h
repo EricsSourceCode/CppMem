@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2022 - 2023.
+// Copyright Eric Chauvin 2022 - 2024.
 
 
 
@@ -29,7 +29,7 @@ class Int32Array
   Int32* iArray;
 
   public:
-  inline Int32Array( void )
+  Int32Array( void )
     {
     arraySize = 1;
     iArray = new Int32[
@@ -37,7 +37,7 @@ class Int32Array
     }
 
 
-  inline Int32Array( const Int32Array& in )
+  Int32Array( const Int32Array& in )
     {
     arraySize = 1;
     iArray = new Int32[
@@ -50,12 +50,12 @@ class Int32Array
     }
 
 
-  inline ~Int32Array( void )
+  ~Int32Array( void )
     {
     delete[] iArray;
     }
 
-  inline void setSize( const Int32 howBig )
+  void setSize( const Int32 howBig )
     {
     if( howBig == arraySize )
       return;
@@ -90,13 +90,21 @@ class Int32Array
     }
 
 
-  inline void copy( const Int32Array& in )
+  void copy( const Int32Array& in )
     {
     setSize( in.arraySize );
 
     const Int32 max = arraySize;
     for( Int32 count = 0; count < max; count++ )
       iArray[count] = in.iArray[count];
+
+    }
+
+  void clearTo( const Int32 setTo )
+    {
+    const Int32 max = arraySize;
+    for( Int32 count = 0; count < max; count++ )
+      iArray[count] = setTo;
 
     }
 
